@@ -21,7 +21,8 @@ import {
     IonInput,
     IonModal,
     IonButtons,
-    IonImg
+    IonImg,
+    IonList
 } from '@ionic/react';
 import { useRef, useState } from 'react';
 import { baseUrl } from '../hooks/BaseUrl';
@@ -77,59 +78,6 @@ const ListeVehicules: React.FC = () => {
     const state = {
         imageBase64: ''
     };
-    // setState({ imageBase64: e.target.result });
-
-
-    // setState({ imageBase64: e.target.result });
-
-
-
-    // const onFileChange = (id: any, event: any) => {
-    //     console.log('onfileChange');
-    //     console.log(event);
-
-    //     if (event && event.target && event.target.files && event.target.files.length > 0) {
-    //         const file = event.target.files[0];
-    //         const reader = new FileReader();
-    //         reader.onload = (e) => {
-    //             console.log("photo en base 64");
-    //             console.log(e.target?.result);
-    //             if (typeof e.target?.result === 'string') {
-    //                 // Mettez à jour la valeur de imageBase64 dans l'état de votre composant avec le résultat de la conversion
-    //                 setImageBase64(e.target.result);
-    //                 console.log('ok');
-    //                 console.log(e.target.result);
-    //                 console.log('id of the avion ' + id);
-
-    //                 // console.log(`Identifiant de l'avion: ${id}`);
-    //             }
-    //         };
-
-    //         reader.readAsDataURL(file);
-    //     }
-    // };
-
-    const onFileChange = (id: string) => {
-        console.log('onfileChange');
-        console.log(`Identifiant de l'avion: ${id}`);
-
-
-        const file = fileInput.current.files[0];
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            console.log("photo en base 64");
-            console.log(e.target?.result);
-            if (typeof e.target?.result === 'string') {
-                // Mettez à jour la valeur de imageBase64 dans l'état de votre composant avec le résultat de la conversion
-                setImageBase64(e.target.result);
-                console.log('ok');
-                console.log(e.target.result);
-            }
-        };
-
-        reader.readAsDataURL(file);
-    };
-
 
     const [isDisabled, setIsDisabled] = useState(false);
     const [isModalOpen, setisModalOpen] = useState(false);
@@ -207,7 +155,7 @@ const ListeVehicules: React.FC = () => {
             <><IonGrid>
                 {/* <IonButton onClick={voirTout}>Bouton</IonButton> */}
                 <IonRow>
-                    <><IonAccordionGroup onClick={voir} expand="inset" id="open-modal" disabled={isDisabled}>
+                    <><IonList>
                         {data.map(item => {
                             return (
                                 <IonAccordion key={item.id} >
@@ -219,38 +167,13 @@ const ListeVehicules: React.FC = () => {
                                         <p>{item.marque} {item?.modele}</p>
                                         {/* <p>acquisition: {item.acquisition}</p> */}
                                         <p>à  {item.kilometrageentree} km and id {item.id}</p>
-                                        <>
-                                            <input
-                                                ref={fileInput}
-                                                hidden
-                                                type="file"
-                                                accept="image/*"
-                                                onChange={(event) => {
-                                                    onFileChange(item.id);
-                                                }}
-                                                onClick={() => { }}
-                                            />
-
-                                            <IonButton
-                                                color="primary"
-                                                onClick={(event) => {
-                                                    // @ts-ignore
-                                                    fileInput.current?.click();
-                                                    onFileChange(item.id);
-                                                }}
-                                            >
-                                                Changer l'image
-                                            </IonButton>
-
-                                        </>
-
                                     </div>
 
 
                                 </IonAccordion>
                             );
                         })}
-                    </IonAccordionGroup>
+                    </IonList>
                         <IonCol size='10'>
                         </IonCol>
 
