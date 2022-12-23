@@ -19,6 +19,7 @@ import {
     IonItem
 } from '@ionic/react';
 import { RouteComponentProps } from 'react-router';
+import { baseUrl } from '../hooks/BaseUrl';
 
 
 import useData from "./getData";
@@ -37,7 +38,7 @@ const ListeAssurance: React.FC<NombreMois> = ({ match }) => {
     console.log(match.params.nombreMois);
 
 
-    const { data, error } = useData("http://localhost:8080/Assurancevoiture/" + match.params.nombreMois);
+    const { data, error } = useData(baseUrl("/AssuranceAvion/") + match.params.nombreMois);
 
     if (!data) {
         return <h1>Loading...</h1>;

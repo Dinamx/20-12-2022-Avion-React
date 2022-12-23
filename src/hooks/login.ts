@@ -36,11 +36,10 @@ const handleLogin = (emailState, passwordState, isErrorState, messageState, toke
     api.post("/login", loginData)
         .then(res => {
             console.log(res.data.token);
-
             setToken(res.data.token);
             localStorage.setItem('token', res.data.token);
             // history.push("/dashboard/" + email);
-            history.push("/acceuil/");
+            // history.push("/acceuil/");
             // history.push("/acceuil/");
         })
         .catch(error => {

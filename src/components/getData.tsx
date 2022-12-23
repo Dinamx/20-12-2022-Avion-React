@@ -17,7 +17,7 @@ function useData(url: any) {
                 setError(err);
             })
     }, [url]);
-    console.log("bonjour");
+    console.log("bonjour" + url);
     console.log(data);
 
     return { data, error };

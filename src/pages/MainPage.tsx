@@ -46,6 +46,11 @@ const Tab2: React.FC = () => {
 
   };
 
+  const disconnect = () => {
+    localStorage.removeItem('token');
+    localStorage.clear();
+  }
+
   return (
     <>
       <IonMenu contentId="main-content">
@@ -64,6 +69,9 @@ const Tab2: React.FC = () => {
             </IonItem>
             <IonItem>
               <IonButton href="/ListeAssurance/3">Page3</IonButton>
+            </IonItem>
+            <IonItem>
+              <IonButton onClick={disconnect}>disconnect</IonButton>
             </IonItem>
           </IonList>
         </IonContent>

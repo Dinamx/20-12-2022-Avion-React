@@ -4,7 +4,7 @@ import { stringify } from 'querystring';
 
 
 
-export async function baseUrl(concat: string): Promise<string> {
+export function baseUrl(concat: string): string {
     return "http://localhost:8080" + concat;
 }
 // export async function baseUrl(concat: string): Promise<string> {

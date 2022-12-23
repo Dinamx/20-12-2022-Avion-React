@@ -71,7 +71,7 @@ const App: React.FC = () => (
         </IonTabBar>
       </IonTabs> */}
 
-      <Route exact path="/" render={() => <Redirect to="/login" />} />
+      <Route exact path="/" render={() => <Redirect to="/acceuil" />} />
 
       <Route path="/login" component={Tab1} exact={true} />
       {/* Liste des voitures */}

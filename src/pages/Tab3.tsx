@@ -1,6 +1,5 @@
 import { IonAccordion, IonAccordionGroup, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonGrid, IonHeader, IonItem, IonLabel, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import { useState } from 'react';
-import Cars from '../components/Cars';
 import ExploreContainer from '../components/ExploreContainer';
 import useData from '../components/getData';
 import './Tab3.css';
@@ -41,7 +40,7 @@ const Tab3: React.FC = () => {
           </IonHeader>
           <IonContent>
 
-            <IonAccordionGroup expand="inset" disabled={false} >
+            <IonAccordionGroup expand="inset" disabled={isDisabled} >
               <IonAccordion >
                 <IonItem slot="header" color="dark" >
                   <IonLabel><h2>Testeur</h2></IonLabel>
