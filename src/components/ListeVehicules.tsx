@@ -22,7 +22,9 @@ import {
     IonModal,
     IonButtons,
     IonImg,
-    IonList
+    IonList,
+    IonSegment,
+    IonFab
 } from '@ionic/react';
 import { useRef, useState } from 'react';
 import { baseUrl } from '../hooks/BaseUrl';
@@ -63,16 +65,9 @@ const ListeVehicules: React.FC = () => {
             setisModalOpen(true);
         }
     }
-    const voir = () => {
-        if (localStorage.getItem('token')) {
-            console.log('misy token');
-            console.log(localStorage.getItem('token'));
-        }
-        else {
-            console.log('tsisy token');
-            setIsDisabled(true);
-            setisModalOpen(true);
-        }
+    const voirplus = (id: string) => {
+        console.log("bonjour" + id);
+
     };
 
     const state = {
@@ -155,32 +150,19 @@ const ListeVehicules: React.FC = () => {
             <><IonGrid>
                 {/* <IonButton onClick={voirTout}>Bouton</IonButton> */}
                 <IonRow>
-                    <><IonList>
+                    <IonList inset={true}>
                         {data.map(item => {
                             return (
-                                <IonAccordion key={item.id} >
-                                    <IonItem slot="header" color="dark">
-                                        <IonLabel><h2>{item.immatriculation}</h2></IonLabel>
-                                    </IonItem>
-                                    <div className="ion-padding" slot="content">
-                                        <IonImg src={item.imageavion} ></IonImg>
-                                        <p>{item.marque} {item?.modele}</p>
-                                        {/* <p>acquisition: {item.acquisition}</p> */}
-                                        <p>à  {item.kilometrageentree} km and id {item.id}</p>
-                                    </div>
+                                <IonItem button onClick={() => voirplus(item.id)} key={item.id} >
+                                    <IonLabel><h3>{item.immatriculation}</h3>
+                                    </IonLabel>
 
-
-                                </IonAccordion>
+                                </IonItem>
                             );
                         })}
                     </IonList>
-                        <IonCol size='10'>
-                        </IonCol>
-
-                    </>
                 </IonRow>
             </IonGrid>
-                {/* Ion Modal */}
                 <IonModal isOpen={isModalOpen}
                 //  onWillDismiss={(ev) => onWillDismiss(ev)}
                 >
@@ -198,12 +180,6 @@ const ListeVehicules: React.FC = () => {
                         </IonToolbar>
                     </IonHeader>
                     <Login></Login>
-                    {/* <IonContent className="ion-padding">
-                        <IonItem>
-                            <IonLabel position="stacked">Enter your name</IonLabel>
-                            <IonInput ref={input} type="text" placeholder="Your name" />
-                        </IonItem>
-                    </IonContent> */}
                 </IonModal></>
 
 
