@@ -34,6 +34,7 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import ListeAssurance from './components/ListeAssurance';
+import VehiculeDetail from './components/VehiculeDetail';
 
 setupIonicReact();
 
@@ -81,6 +82,9 @@ const App: React.FC = () => (
       <Route path="/dashboard/" component={Tab3} exact={true} />
       {/* Liste des assurance plus combien de mois */}
       <Route path="/ListeAssurance/:nombreMois" component={ListeAssurance} exact={true} />
+
+
+      <Route component={VehiculeDetail} path="/car/:id" />
 
       {/* Side Menu  */}
     </IonReactRouter>
