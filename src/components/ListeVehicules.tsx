@@ -24,7 +24,8 @@ import {
     IonImg,
     IonList,
     IonSegment,
-    IonFab
+    IonFab,
+    IonIcon
 } from '@ionic/react';
 import { useEffect, useRef, useState } from 'react';
 import { baseUrl } from '../hooks/BaseUrl';
@@ -36,6 +37,7 @@ import Login from './Login';
 import React from 'react';
 
 import { getSData } from '../hooks/getStaticData';
+import { add, star } from 'ionicons/icons';
 
 
 const ListeVehicules: React.FC = () => {
@@ -101,8 +103,8 @@ const ListeVehicules: React.FC = () => {
                         {data.map(item => {
                             return (
                                 <IonItem button onClick={() => voirplus(item.id)} key={item.id}>
-                                    <IonLabel><h3>{item.immatriculation}</h3>
-
+                                    <IonLabel ><h3>{item.immatriculation}</h3>
+                                        <IonButton fill="clear"><IonIcon slot="icon-only" icon={add}></IonIcon></IonButton>
                                     </IonLabel>
 
                                 </IonItem>
